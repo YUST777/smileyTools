@@ -19,7 +19,30 @@
 <br/>
 
 > [!TIP]
-> **Download and share YouTube videos directly in Telegram using inline mode!** Just paste a YouTube URL and the bot handles the rest.
+> **Download and share YouTube videos directly in Telegram using inline mode> /home/yousefmsm1/Desktop/MyProjects/smileyTools/README.md << 'EOF'
+<p align="center"><img src="assests/banner.jpg" alt="smileyTools Banner" width="100%"></p>
+
+<div align="center">
+
+# smileyTools
+
+### YouTube Video Downloader & Inline Telegram Bot
+
+<br/>
+
+[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Telegram Bot](https://img.shields.io/badge/Telegram-Bot-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://core.telegram.org/bots)
+[![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![yt-dlp](https://img.shields.io/badge/yt--dlp-Latest-red?style=for-the-badge&logo=youtube&logoColor=white)](https://github.com/yt-dlp/yt-dlp)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
+</div>
+
+<br/>
+
+> [!TIP]
+> **Download and share YouTube videos directly in Telegram using inline mode> /home/yousefmsm1/Desktop/MyProjects/smileyTools/README_TEMP.md << 'EOF'
+EOF* Just paste a YouTube URL and the bot handles the rest.
 
 ---
 
@@ -34,6 +57,9 @@ smileyTools is a powerful Telegram bot that downloads YouTube videos and serves 
 - 💾 **Smart Caching**: Videos are cached to avoid re-downloading
 - ⚡ **Fast Processing**: Optimized download with yt-dlp
 - 🔒 **Secure**: No data stored permanently, automatic cleanup
+
+---
+
 
 ---
 
@@ -52,50 +78,34 @@ smileyTools is a powerful Telegram bot that downloads YouTube videos and serves 
 - Works in groups, channels, and private chats
 
 ### CDN Server
+## System Architecture
+
+```mermaid
+graph TB
+    A[Telegram User] -->|Inline Query: @bot youtube_url| B[Telegram Bot API]
+    B -->|telegram_bot.py| C{URL Validation}
+    C -->|Valid URL| D[POST /process]
+    C -->|Invalid URL| E[Error Message]
+    D --> F[CDN Server - cdn_server.py]
+    F -->|Check Cache| G{Video Cached?}
+    G -->|Yes| H[Return Cached URL]
+    G -->|No| I[yt-dlp Download]
+    I --> J[YouTube]
+    J -->|Video Data| K[downloads/ folder]
+    K --> L[Serve via /download/video_id]
+    H --> M[Inline Result]
+    L --> M
+    M --> N[User Sends Video]
+    
+    style A fill:#2CA5E0
+    style F fill:#000000,color:#fff
+    style J fill:#FF0000,color:#fff
+    style K fill:#90EE90
+```
 - Built-in Flask server for video hosting
 - Efficient video streaming
 - Automatic file management
 - Public URL support via ngrok or similar services
-
----
-
-## System Architecture
-
-```
-┌─────────────────┐
-│  Telegram User  │
-└────────┬────────┘
-         │ Inline Query: @bot <youtube_url>
-         ▼
-┌─────────────────────────┐
-│   Telegram Bot API      │
-│  (telegram_bot.py)      │
-│  - Inline query handler │
-│  - URL validation       │
-└────────┬────────────────┘
-         │ POST /process
-         ▼
-┌─────────────────────────┐
-│    CDN Server           │
-│   (cdn_server.py)       │
-│  - Flask web server     │
-│  - yt-dlp integration   │
-│  - Video caching        │
-└────────┬────────────────┘
-         │ Download video
-         ▼
-┌─────────────────────────┐
-│      YouTube            │
-│   (yt-dlp fetches)      │
-└─────────────────────────┘
-         │
-         ▼
-┌─────────────────────────┐
-│   downloads/ folder     │
-│  - Cached MP4 files     │
-│  - Served via /download │
-└─────────────────────────┘
-```
 
 ---
 
@@ -296,3 +306,21 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 <sub>Made with ❤️ by [@YUST777](https://github.com/YUST777)</sub>
 
 </div>
+EOF* Just paste a YouTube URL and the bot handles the rest.
+
+---
+
+## Overview
+
+smileyTools is a powerful Telegram bot that downloads YouTube videos and serves them via inline mode. Built with Python, Flask, and yt-dlp, it provides a seamless way to share YouTube content directly in Telegram chats.
+
+**Key Features:**
+- 📥 **YouTube Downloader**: Download videos from YouTube, YouTube Shorts, and more
+- 🤖 **Inline Mode**: Share videos directly in any Telegram chat
+- 🚀 **CDN Server**: Built-in Flask server for video hosting
+- 💾 **Smart Caching**: Videos are cached to avoid re-downloading
+- ⚡ **Fast Processing**: Optimized download with yt-dlp
+- 🔒 **Secure**: No data stored permanently, automatic cleanup
+
+---
+
